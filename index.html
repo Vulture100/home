@@ -2,13 +2,326 @@
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<!--<link rel="stylesheet" type="text/css" href="./assets/css/style.css">-->
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="home.js"></script>
+
+	<style>
+		* {
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+
+html {
+	color: #333;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #666666;
+}
+::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #e1e1e1;
+}
+::-webkit-scrollbar-track:active {
+  background: #e1e1e1;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+#header {
+	width: 760px;
+	height: calc(100px - 1px);
+	margin-left: calc(0.25 * 100% - 760px + 530px);
+	clear: both;
+	border-bottom: 1px solid #333;
+}
+#header h1 {
+	width: 200px;
+	height: 100px;
+	font-family: 'Poppins', sans-serif;
+	font-size: 50px;
+	line-height: 100px;
+	letter-spacing: 5px;
+	padding: 5px;
+	display: inline-block;
+}
+
+#linkDiv {
+	width: 100%;
+	height: calc(100% - 100px);
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.col1 {
+	width: 760px;
+	margin-left: calc(0.25 * 100% - 760px + 530px);
+	float: left;
+	/*background-color: #f0f0f0;
+	box-shadow: 0 0 2px grey;*/
+}
+.col2 {
+	width: 520px;
+	height: 100%;
+	margin-right: 20px;
+	float: right;
+	overflow-y: auto;
+}
+
+.linkWrapper {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	margin: 5px;
+	padding: 2px;
+}
+
+.link {
+	width: 120px;
+	height: auto;
+	float: left;
+	margin: 0 5px 5px 0;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,0.25);
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	/*border-radius: 5px;*/
+}
+
+.linkHeader.showMenu {
+	height: 0px;
+}
+
+.link.showName p {
+	display: block;
+	width: 100%;
+	height: 20px;
+	padding: 0;
+	line-height: 20px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.linkHeader {
+	height: auto;
+	overflow: hidden;
+}
+.linkHeader p {
+	display: none;
+
+	font-family: arial;
+	font-size: 25px;
+	text-align: center;
+	line-height: 120px;
+	padding-left: 5px;
+	color: black;
+	float: left;
+	height: 100%;
+}
+.linkHeader .moreIcon {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	color: #fff;
+	background-color: rgba(255,255,255,0.5);
+	border-radius: 50%;
+}
+.moreIcon i {
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	display: block;
+}
+.linkHeader .moreIcon.hidden {
+	display: none;
+}
+.linkHeader a {
+	display: block;
+	width: 100%;
+	height: 120px;
+}
+
+.linkHeader .thumbnail {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	float: left;
+}
+
+.linkHeader .thumbnail.web {
+	width: 245px;
+}
+.linkHeader .thumbnail.web img {
+	top: 0;
+	left: 0;
+	transform: none;
+}
+.link.web {
+	width: 245px;
+}
+
+.linkHeader .thumbnail img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	width: auto;
+	transform: translate(-50%, -50%);
+}
+.linkHeader .thumbnail img.portait {
+	width: 100%;
+	height: auto;
+}
+.link .logo {
+	width: auto;
+	height: 100px;
+	float: left;
+	padding: 10px;
+}
+.addLinks {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background-color: #f0f0f0;
+}
+.addLinks a {
+	width: calc(100% - 10px);
+	height: 20px;
+	padding: 5px;
+	display: block;
+	float: left;
+	font-family: arial;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+	text-decoration: none;
+	color: #333;
+
+}
+
+.moreLinks {
+	width: 100%;
+	height: 120px;
+	display: none;
+	position: absolute relative;
+	top: 0;
+	left: 0;
+	z-index: 3;
+
+	overflow-y: auto;
+}
+.moreLinks a {
+	display: block;
+	width: calc(100% - 10px);
+	padding: 5px;
+	color: black;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+}
+.moreLinks i {
+	font-size: 14px;
+	margin-right: 5px;
+	float: left;
+}
+.moreLinks.expanded {
+	display: block;
+}
+
+.subHeader {
+	width: 100%;
+	height: 50px;
+}
+.subHeader.groupHeader {
+	cursor: pointer;
+}
+.subHeader h3 {
+	float: left;
+	width: auto;
+	height: 100%;
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
+	line-height: 50px;
+	letter-spacing: 2px;
+	padding: 5px;
+}
+.subHeader i {
+	float: left;
+	width: 50px;
+	height: 50px;
+	font-size: 25px;
+	line-height: 50px;
+	text-align: center;
+	padding: 5px;
+}
+
+.group {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+}
+.linkGroup {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	display: none;
+}
+@media screen and (max-width: 910px) {
+	#linkDiv {
+		width: 100%;
+		margin: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	#header {
+		width: 100%;
+		margin: 0;
+	}
+    .col1, .col2 {
+        width: 100%;
+        margin: 0;
+    }
+}
+	</style>
+
 </head>
 <body>
 
